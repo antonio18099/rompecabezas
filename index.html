@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101827">
+  <meta name="description" content="Un rompecabezas deslizante de 4 por 4.">
+  <title>Rompecabezas deslizante</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app">
+    <header class="hero">
+      <div class="eyebrow">JUEGO DE INGENIO</div>
+      <h1>Arma la imagen<span> 🧩</span></h1>
+      <p>Desliza las fichas hasta reconstruir la imagen.</p>
+    </header>
+
+    <section class="game-card" aria-label="Juego de rompecabezas">
+      <div class="toolbar">
+        <div class="stat"><span class="stat-label">MOVIMIENTOS</span><strong id="moves">0</strong></div>
+        <div class="stat"><span class="stat-label">TIEMPO</span><strong id="timer">00:00</strong></div>
+        <button id="previewBtn" class="ghost-btn" type="button">Ver imagen</button>
+      </div>
+
+      <div id="board" class="board" role="group" aria-label="Tablero de 4 por 4"></div>
+
+      <div class="controls">
+        <button id="shuffleBtn" class="primary-btn" type="button">🔀 Mezclar fichas</button>
+        <button id="restartBtn" class="secondary-btn" type="button">↻ Reiniciar</button>
+      </div>
+      <p id="message" class="message" aria-live="polite">Pulsa “Mezclar fichas” para empezar.</p>
+      <details class="image-settings">
+        <summary>Personalizar imagen</summary>
+        <label for="imageUrl">Pega el enlace directo de una imagen</label>
+        <div class="url-row">
+          <input id="imageUrl" type="url" placeholder="https://ejemplo.com/imagen.jpg" autocomplete="url">
+          <button id="applyImageBtn" class="secondary-btn" type="button">Aplicar</button>
+        </div>
+        <p class="hint">También puedes reemplazar <code>puzzle-image.svg</code> por una imagen propia y actualizar la variable IMAGE_URL en <code>script.js</code>. Usa imágenes que tengas permiso de compartir.</p>
+      </details>
+    </section>
+    <footer>Hecho para jugar en computador o celular · No requiere registro</footer>
+  </main>
+
+  <dialog id="previewDialog" class="preview-dialog">
+    <form method="dialog">
+      <button class="close-btn" aria-label="Cerrar">✕</button>
+      <h2>Imagen completa</h2>
+      <img id="previewImage" src="puzzle-image.svg" alt="Imagen de referencia del rompecabezas">
+      <button class="primary-btn dialog-ok">Volver al juego</button>
+    </form>
+  </dialog>
+  <dialog id="winDialog" class="win-dialog">
+    <form method="dialog">
+      <div class="win-emoji">🎉</div>
+      <h2>¡Lo lograste!</h2>
+      <p id="winSummary">Completaste el rompecabezas.</p>
+      <button class="primary-btn" id="playAgainBtn" type="button">Jugar otra vez</button>
+      <button class="secondary-btn dialog-ok">Cerrar</button>
+    </form>
+  </dialog>
+  <script src="script.js"></script>
+</body>
+</html>
